@@ -7,7 +7,6 @@ type CreateAtleticaSubmissionDTO = {
   cnpj: string;
   faculdade: string;
   cidade: string;
-  confirmacao?: boolean;
 };
 
 export class CreateAtleticaSubmissionUseCase {
