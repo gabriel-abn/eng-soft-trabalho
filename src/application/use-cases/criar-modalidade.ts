@@ -5,6 +5,7 @@ type CreateModalidadeDTO = {
   id: string;
   nome: string;
   ambiente: string;
+  tipo: string;
 };
 
 export class CreateModalidadeUseCase {

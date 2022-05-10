@@ -1,5 +1,5 @@
 import { InMemoryAtleticaRepository } from "../../../src/application/repositories/InMemoryRepositories/in-memory-atletica-repo";
-import { CreateAtleticaSubmissionUseCase } from "../../../src/application/use-cases/create-atletica-submission-use-case";
+import { CreateAtleticaSubmissionUseCase } from "../../../src/application/use-cases/criar-atletica-submissao";
 import { Atletica } from "../../../src/domain/Atletica";
 
 describe("Create Atletica submission to be accepted by adminstrator in memory repository", () => {

@@ -5,10 +5,16 @@ export enum ModalidadeAmbiente {
   online = "ONLINE",
 }
 
+export enum ModalidadeTipo {
+  individual = "INDIVIDUAL",
+  coletivo = "COLETIVO",
+}
+
 type ModalidadeProps = {
   id: string;
   nome: string;
   ambiente: string;
+  tipo: string;
 };
 
 export class Modalidade extends Entity<ModalidadeProps> {

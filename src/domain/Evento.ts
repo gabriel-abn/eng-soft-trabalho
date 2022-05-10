@@ -3,6 +3,8 @@ import { Entity } from "./core/Entity";
 type EventoProps = {
   id: string;
   nome: string;
+  data: string;
+  local: string;
 };
 
 export class Evento extends Entity<EventoProps> {

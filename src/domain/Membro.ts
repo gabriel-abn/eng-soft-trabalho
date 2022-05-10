@@ -2,6 +2,7 @@ import { Entity } from "./core/Entity";
 
 type MembroProps = {
   id: string;
+  rg: string;
   nome: string;
   atletica: string;
 };

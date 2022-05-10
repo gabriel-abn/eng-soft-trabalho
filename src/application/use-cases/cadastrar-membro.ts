@@ -3,6 +3,7 @@ import { MembroRepository } from "../repositories/MembroRepository";
 
 type CreateMembroUseCaseDTO = {
   id: string;
+  rg: string;
   nome: string;
   atletica: string;
 };
