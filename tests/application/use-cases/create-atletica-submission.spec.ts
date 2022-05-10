@@ -1,16 +1,11 @@
 import { InMemoryAtleticaRepository } from "../../../src/application/repositories/InMemoryRepositories/in-memory-atletica-repo";
 import { CreateAtleticaSubmissionUseCase } from "../../../src/application/use-cases/criar-atletica-submissao";
 import { Atletica } from "../../../src/domain/Atletica";
+import { mockAtleticaNaoConfirmada } from "../../mocks/AtleticaMocks";
 
 describe("Create Atletica submission to be accepted by adminstrator in memory repository", () => {
   it("should be able to send request to be accepted", async () => {
-    const atleticaCreate = Atletica.create({
-      cidade: "João Monlevade",
-      cnpj: "123456789/0000-01",
-      faculdade: "UFOP",
-      id: "LOUJM",
-      nome: "Loucomotiva",
-    });
+    const atleticaCreate = mockAtleticaNaoConfirmada();
     const privateRepo = new InMemoryAtleticaRepository();
     const sut = new CreateAtleticaSubmissionUseCase(privateRepo);
 

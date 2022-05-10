@@ -2,7 +2,7 @@ import { Atletica } from "../../src/domain/Atletica";
 import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
 
-export const AtleticaConfirmadaMock = (): Atletica =>
+export const mockAtleticaConfirmada = (): Atletica =>
   Atletica.create({
     id: uuid(),
     cidade: faker.address.cityName(),
@@ -12,7 +12,7 @@ export const AtleticaConfirmadaMock = (): Atletica =>
     confirmacao: true,
   });
 
-export const AtleticaNaoConfirmadaMock = (): Atletica =>
+export const mockAtleticaNaoConfirmada = (): Atletica =>
   Atletica.create({
     id: uuid(),
     cidade: faker.address.cityName(),
