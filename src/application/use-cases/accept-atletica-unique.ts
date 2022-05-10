@@ -8,14 +8,13 @@ export class AcceptAtleticaUseCase {
     const atletica = await this.atleticaRepo
       .searchByID(id)
       .then((res: Atletica) => {
+        res.setConfirmationTrue();
         return res;
       })
       .catch((err: Error) => {
         return new Error(err.message);
       });
 
-    if (atletica.props.confirmacao) {
-      console.log("Success");
-    }
+    return atletica;
   }
 }

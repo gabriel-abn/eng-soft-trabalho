@@ -21,5 +21,7 @@ export class CreateModalidadeUseCase {
       .catch((err: Error) => {
         throw new Error(err.message);
       });
+
+    return response;
   }
 }

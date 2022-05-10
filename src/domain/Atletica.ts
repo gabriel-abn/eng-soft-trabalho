@@ -22,9 +22,4 @@ export class Atletica extends Entity<AtleticaProps> {
   public setConfirmationTrue() {
     this.props.confirmacao = true;
   }
-
-  public setConfirmationFalse()
-  {
-    this.props.confirmacao = false;
-  }
 }

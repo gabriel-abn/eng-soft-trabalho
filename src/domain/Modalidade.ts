@@ -1,5 +1,10 @@
 import { Entity } from "./core/Entity";
 
+export enum ModalidadeAmbiente {
+  presencial = "PRESENCIAL",
+  online = "ONLINE",
+}
+
 type ModalidadeProps = {
   id: string;
   nome: string;
