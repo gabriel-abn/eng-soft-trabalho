@@ -1,7 +1,7 @@
 import { Atletica } from "../../domain/Atletica";
 
-export interface AtleticaRepository {
-  insert(atletica: Atletica): Promise<Atletica | Error>;
+export interface IAtleticaRepository {
+  insert(atletica: Atletica): Promise<string>;
   searchByID(id: string): Promise<Atletica>;
   searchByAcceptence(acceptence: boolean): Promise<Atletica[]>;
 }

@@ -10,7 +10,7 @@ export enum ModalidadeTipo {
   coletivo = "COLETIVO",
 }
 
-type ModalidadeProps = {
+export type ModalidadeProps = {
   id: string;
   nome: string;
   ambiente: string;

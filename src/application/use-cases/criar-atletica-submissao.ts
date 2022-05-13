@@ -1,5 +1,5 @@
 import { Atletica } from "../../domain/Atletica";
-import { AtleticaRepository } from "../repositories/AtleticaRepository";
+import { IAtleticaRepository } from "../repositories/AtleticaRepository";
 
 type CreateAtleticaSubmissionDTO = {
   id: string;
@@ -10,7 +10,7 @@ type CreateAtleticaSubmissionDTO = {
 };
 
 export class CreateAtleticaSubmissionUseCase {
-  constructor(private readonly atleticaRepo: AtleticaRepository) {}
+  constructor(private readonly atleticaRepo: IAtleticaRepository) {}
 
   async execute(props: CreateAtleticaSubmissionDTO) {
     const atletica = Atletica.create(props);

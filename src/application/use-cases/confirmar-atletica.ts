@@ -1,8 +1,8 @@
 import { Atletica } from "../../domain/Atletica";
-import { AtleticaRepository } from "../repositories/AtleticaRepository";
+import { IAtleticaRepository } from "../repositories/AtleticaRepository";
 
 export class AcceptAtleticaUseCase {
-  constructor(private readonly atleticaRepo: AtleticaRepository) {}
+  constructor(private readonly atleticaRepo: IAtleticaRepository) {}
 
   async execute(id: string) {
     const atletica = await this.atleticaRepo

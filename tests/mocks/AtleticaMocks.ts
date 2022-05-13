@@ -9,7 +9,7 @@ export const mockAtleticaConfirmada = (): Atletica =>
     faculdade: faker.company.companyName(),
     nome: faker.name.jobTitle(),
     cnpj: faker.datatype.uuid(),
-    confirmacao: true,
+    confirmacao: 1,
   });
 
 export const mockAtleticaNaoConfirmada = (): Atletica =>
@@ -19,5 +19,5 @@ export const mockAtleticaNaoConfirmada = (): Atletica =>
     faculdade: faker.company.companyName(),
     nome: faker.name.jobTitle(),
     cnpj: faker.datatype.uuid(),
-    confirmacao: false,
+    confirmacao: 0,
   });

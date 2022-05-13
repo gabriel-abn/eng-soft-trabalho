@@ -1,5 +1,5 @@
 import { Atletica } from "../../domain/Atletica";
-import { AtleticaRepository } from "../repositories/AtleticaRepository";
+import { IAtleticaRepository } from "../repositories/AtleticaRepository";
 
 type CreateAtleticaByAdminDTO = {
   id: string;
@@ -7,10 +7,11 @@ type CreateAtleticaByAdminDTO = {
   cnpj: string;
   faculdade: string;
   cidade: string;
+  confirmacao?: number;
 };
 
 export class CreateAtleticaByAdminUseCase {
-  constructor(private readonly atleticaRepo: AtleticaRepository) {}
+  constructor(private readonly atleticaRepo: IAtleticaRepository) {}
 
   async execute(props: CreateAtleticaByAdminDTO) {
     const atletica = Atletica.create(props);

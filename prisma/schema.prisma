@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Atletica {
+  id          String
+  nome        String
+  cnpj        String       @id
+  faculdade   String
+  cidade      String
+  confirmacao Boolean
+  eventos     Evento[]
+  modalidades Modalidade[]
+  Membro      Membro[]
+}
+
+model Evento {
+  id        String     @id
+  nome      String
+  data      String
+  local     String
+  atleticas Atletica[]
+}
+
+model Modalidade {
+  id        String     @id
+  nome      String
+  ambiente  String
+  tipo      String
+  atleticas Atletica[]
+}
+
+model Membro {
+  id           String
+  rg           String   @id
+  nome         String
+  atletica     Atletica @relation(fields: [atleticaCnpj], references: [cnpj])
+  atleticaCnpj String
+}

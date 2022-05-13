@@ -1,25 +1,24 @@
 import { Entity } from "./core/Entity";
 
-type AtleticaProps = {
+export type AtleticaProps = {
   id: string;
   nome: string;
   cnpj: string;
   faculdade: string;
   cidade: string;
-  confirmacao?: boolean;
+  confirmacao?: number;
 };
 
 export class Atletica extends Entity<AtleticaProps> {
-  private constructor(props: AtleticaProps, id?: string) {
-    props.confirmacao = false;
-    super(props, id);
+  private constructor(props: AtleticaProps, _id?: string) {
+    super(props, _id);
   }
 
-  static create(props: AtleticaProps, id?: string) {
-    return new Atletica({ ...props, id });
+  static create(props: AtleticaProps, _id?: string) {
+    return new Atletica({ ...props });
   }
 
   public setConfirmationTrue() {
-    this.props.confirmacao = true;
+    this.props.confirmacao = 1;
   }
 }

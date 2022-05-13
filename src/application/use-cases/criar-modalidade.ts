@@ -1,5 +1,5 @@
 import { Modalidade } from "../../domain/Modalidade";
-import { ModalidadeRepository } from "../repositories/ModalidadeRepository";
+import { IModalidadeRepository } from "../repositories/ModalidadeRepository";
 
 type CreateModalidadeDTO = {
   id: string;
@@ -9,7 +9,7 @@ type CreateModalidadeDTO = {
 };
 
 export class CreateModalidadeUseCase {
-  constructor(private readonly modalidadeRepo: ModalidadeRepository) {}
+  constructor(private readonly modalidadeRepo: IModalidadeRepository) {}
 
   async execute(props: CreateModalidadeDTO, id?: string) {
     const modalidade = Modalidade.create({ ...props, id });

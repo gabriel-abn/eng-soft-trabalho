@@ -1,4 +1,4 @@
-import { InMemoryAtleticaRepository } from "../../../src/application/repositories/InMemoryRepositories/in-memory-atletica-repo";
+import { AtleticaRepository } from "../../../src/infra/PrismaRepositories/atletica-repository";
 import { CreateAtleticaSubmissionUseCase } from "../../../src/application/use-cases/criar-atletica-submissao";
 import { Atletica } from "../../../src/domain/Atletica";
 import { mockAtleticaNaoConfirmada } from "../../mocks/AtleticaMocks";
@@ -6,7 +6,7 @@ import { mockAtleticaNaoConfirmada } from "../../mocks/AtleticaMocks";
 describe("Create Atletica submission to be accepted by adminstrator in memory repository", () => {
   it("should be able to send request to be accepted", async () => {
     const atleticaCreate = mockAtleticaNaoConfirmada();
-    const privateRepo = new InMemoryAtleticaRepository();
+    const privateRepo = new AtleticaRepository();
     const sut = new CreateAtleticaSubmissionUseCase(privateRepo);
 
     const response = await sut

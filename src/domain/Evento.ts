@@ -1,6 +1,6 @@
 import { Entity } from "./core/Entity";
 
-type EventoProps = {
+export type EventoProps = {
   id: string;
   nome: string;
   data: string;

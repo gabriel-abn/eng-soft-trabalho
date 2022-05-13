@@ -1,6 +1,6 @@
 import { Modalidade } from "../../domain/Modalidade";
 
-export interface ModalidadeRepository {
-  create(modalidade: Modalidade): Promise<Modalidade | Error>;
+export interface IModalidadeRepository {
+  create(modalidade: Modalidade): Promise<Modalidade>;
   searchByID(id: string): Promise<Modalidade>;
 }

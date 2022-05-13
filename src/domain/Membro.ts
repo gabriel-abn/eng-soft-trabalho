@@ -1,6 +1,6 @@
 import { Entity } from "./core/Entity";
 
-type MembroProps = {
+export type MembroProps = {
   id: string;
   rg: string;
   nome: string;

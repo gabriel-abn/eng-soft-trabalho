@@ -1,7 +1,7 @@
 import { Atletica } from "../../domain/Atletica";
 import { Modalidade } from "../../domain/Modalidade";
-import { AtleticaRepository } from "../repositories/AtleticaRepository";
-import { ModalidadeRepository } from "../repositories/ModalidadeRepository";
+import { IAtleticaRepository } from "../repositories/AtleticaRepository";
+import { IModalidadeRepository } from "../repositories/ModalidadeRepository";
 
 type AdesaoModalidadeUseCaseDTO = {
   idAtletica: string;
@@ -10,8 +10,8 @@ type AdesaoModalidadeUseCaseDTO = {
 
 export class AdesaoModalidadeUseCase {
   constructor(
-    private readonly atleticaRepo: AtleticaRepository,
-    private readonly modalidadeRepo: ModalidadeRepository
+    private readonly atleticaRepo: IAtleticaRepository,
+    private readonly modalidadeRepo: IModalidadeRepository
   ) {}
 
   async execute(props: AdesaoModalidadeUseCaseDTO) {
