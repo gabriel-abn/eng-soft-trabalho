@@ -1,6 +1,6 @@
 import { AtleticaRepository } from "../../../src/infra/PrismaRepositories/atletica-repository";
 import { CreateAtleticaSubmissionUseCase } from "../../../src/application/use-cases/criar-atletica-submissao";
-import { Atletica } from "../../../src/domain/Atletica";
+import { Atletica, AtleticaProps } from "../../../src/domain/Atletica";
 import { mockAtleticaNaoConfirmada } from "../../mocks/AtleticaMocks";
 
 describe("Create Atletica submission to be accepted by adminstrator in memory repository", () => {
@@ -11,18 +11,12 @@ describe("Create Atletica submission to be accepted by adminstrator in memory re
 
     const response = await sut
       .execute(atleticaCreate.props)
-      .then((res) => {
-        if (res instanceof Atletica) {
-          console.log(JSON.stringify(res));
-          return res;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        return new Error("Unable to create atletica.");
+      .then((res: AtleticaProps) => {
+        return res;
       });
 
-    expect(response).toBeInstanceOf(Atletica);
-    expect(response).toHaveProperty("props.confirmacao", false);
+    console.log(response);
+    expect(response).toStrictEqual<AtleticaProps>({ ...atleticaCreate.props });
+    expect(response).toHaveProperty("confirmacao", 0);
   });
 });

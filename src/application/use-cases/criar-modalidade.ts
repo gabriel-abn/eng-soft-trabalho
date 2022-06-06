@@ -12,7 +12,7 @@ export class CreateModalidadeUseCase {
   constructor(private readonly modalidadeRepo: IModalidadeRepository) {}
 
   async execute(props: CreateModalidadeDTO, id?: string) {
-    const modalidade = Modalidade.create({ ...props, id });
+    const modalidade = Modalidade.create({ ...props }, id);
 
     const response = await this.modalidadeRepo
       .create(modalidade)

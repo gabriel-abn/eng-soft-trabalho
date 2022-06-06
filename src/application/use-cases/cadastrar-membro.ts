@@ -1,14 +1,14 @@
 import { Membro } from "../../domain/Membro";
-import { MembroRepository } from "../repositories/MembroRepository";
+import { IMembroRepository } from "../repositories/MembroRepository";
 
 type CreateMembroUseCaseDTO = {
   id: string;
   rg: string;
   nome: string;
-  atletica: string;
+  atleticaCnpj: string;
 };
 export class CreateMembroUseCase {
-  constructor(private readonly membroRepo: MembroRepository) {}
+  constructor(private readonly membroRepo: IMembroRepository) {}
 
   async execute(membro: CreateMembroUseCaseDTO, _id?: string) {
     const insertMembro = Membro.create({ ...membro }, _id);

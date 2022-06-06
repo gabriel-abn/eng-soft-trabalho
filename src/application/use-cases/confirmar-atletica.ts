@@ -1,4 +1,4 @@
-import { Atletica } from "../../domain/Atletica";
+import { Atletica, AtleticaProps } from "../../domain/Atletica";
 import { IAtleticaRepository } from "../repositories/AtleticaRepository";
 
 export class AcceptAtleticaUseCase {
@@ -7,8 +7,7 @@ export class AcceptAtleticaUseCase {
   async execute(id: string) {
     const atletica = await this.atleticaRepo
       .searchByID(id)
-      .then((res: Atletica) => {
-        res.setConfirmationTrue();
+      .then((res: AtleticaProps) => {
         return res;
       })
       .catch((err: Error) => {

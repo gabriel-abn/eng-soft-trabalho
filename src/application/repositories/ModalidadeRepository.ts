@@ -1,6 +1,6 @@
-import { Modalidade } from "../../domain/Modalidade";
+import { Modalidade, ModalidadeProps } from "../../domain/Modalidade";
 
 export interface IModalidadeRepository {
-  create(modalidade: Modalidade): Promise<Modalidade>;
-  searchByID(id: string): Promise<Modalidade>;
+  create(modalidade: Modalidade): Promise<ModalidadeProps>;
+  searchByID(id: string): Promise<ModalidadeProps | Error>;
 }

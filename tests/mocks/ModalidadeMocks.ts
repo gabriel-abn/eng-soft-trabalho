@@ -8,7 +8,7 @@ import {
 
 export const mockModalidadeIndividualPresencial = (): Modalidade =>
   Modalidade.create({
-    id: v4(),
+    id: v4().toString(),
     nome: faker.word.noun(),
     ambiente: ModalidadeAmbiente.presencial,
     tipo: ModalidadeTipo.individual,
@@ -16,14 +16,14 @@ export const mockModalidadeIndividualPresencial = (): Modalidade =>
 
 export const mockModalidadeIndividualOnline = (): Modalidade =>
   Modalidade.create({
-    id: v4(),
+    id: v4().toString(),
     nome: faker.word.noun(),
     ambiente: ModalidadeAmbiente.online,
     tipo: ModalidadeTipo.individual,
   });
 export const mockModalidadeColetivoPresencial = (): Modalidade =>
   Modalidade.create({
-    id: v4(),
+    id: v4().toString(),
     nome: faker.word.noun(),
     ambiente: ModalidadeAmbiente.presencial,
     tipo: ModalidadeTipo.coletivo,
@@ -31,7 +31,7 @@ export const mockModalidadeColetivoPresencial = (): Modalidade =>
 
 export const mockModalidadeColetivoOnline = (): Modalidade =>
   Modalidade.create({
-    id: v4(),
+    id: v4().toString(),
     nome: faker.word.noun(),
     ambiente: ModalidadeAmbiente.online,
     tipo: ModalidadeTipo.coletivo,

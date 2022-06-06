@@ -1,23 +1,24 @@
+import { Prisma } from "@prisma/client";
 import { IModalidadeRepository } from "../../application/repositories/ModalidadeRepository";
-import { Modalidade } from "../../domain/Modalidade";
+import { Modalidade, ModalidadeProps } from "../../domain/Modalidade";
+import { prisma } from "./prismaClient";
 
 export class ModalidadeRepository implements IModalidadeRepository {
-  private itens: Modalidade[] = [];
+  async create(modalidade: Modalidade): Promise<ModalidadeProps> {
+    const query = Prisma.raw(
+      `INSERT INTO leemgProjeto.Modalidade (id, nome, ambiente, tipo) VALUES ('${modalidade.props.id}, ${modalidade.props.nome}, ${modalidade.props.ambiente}, ${modalidade.props.tipo});`
+    );
+    const request = await prisma.$executeRaw(query);
 
-  async create(modalidade: Modalidade): Promise<Modalidade> {
-    this.itens.push(modalidade);
-
-    return this.itens.find((modl) => {
-      if (modl.props.id == modalidade.props.id) {
-        return modl;
-      }
-    });
+    const response = await prisma.$queryRaw<
+      ModalidadeProps[]
+    >`SELECT * FROM leemgProjeto.Modalidade WHERE id = ${modalidade.props.id}`;
+    return response.at(0);
   }
-  async searchByID(id: string): Promise<Modalidade> {
-    return this.itens.find((modl) => {
-      if (modl.props.id == id) {
-        return modl;
-      }
-    });
+  async searchByID(id: string): Promise<Error | ModalidadeProps> {
+    const response = await prisma.$queryRaw<
+      ModalidadeProps[]
+    >`SELECT * FROM leemgProjeto.Modalidade WHERE id = ${id}`;
+    return response.at(0);
   }
 }

@@ -2,18 +2,23 @@ import { CreateAtleticaByAdminUseCase } from "../../../src/application/use-cases
 import { mockAtleticaConfirmada } from "../../mocks/AtleticaMocks";
 import { AtleticaRepository } from "../../../src/infra/PrismaRepositories/atletica-repository";
 import { prisma } from "../../../src/infra/PrismaRepositories/prismaClient";
+import { AtleticaProps } from "../../../src/domain/Atletica";
 
-describe("Create an Atletica by administrator", () => {
+const makeSut = () => {
+  const atleticaRepo = new AtleticaRepository();
+  const sut = new CreateAtleticaByAdminUseCase(atleticaRepo);
+
+  return { atleticaRepo, sut };
+};
+
+describe("Criar atlética pelo administrador", () => {
   beforeAll(async () => {
     await prisma.$queryRaw`DELETE FROM leemgProjeto.Atletica`;
   });
-  it("should be able to create an Atletica with confirmation status true", async () => {
+  it("deve cadastrar uma atlética com status de confirmação '1'", async () => {
     const atleticaCreate = mockAtleticaConfirmada();
+    const { sut } = makeSut();
 
-    const atleticaRepo = new AtleticaRepository();
-    const sut = new CreateAtleticaByAdminUseCase(atleticaRepo);
-
-    console.log(atleticaCreate.props);
     const response = await sut
       .execute(atleticaCreate.props)
       .then((res) => {
@@ -23,7 +28,7 @@ describe("Create an Atletica by administrator", () => {
         throw new Error(err.message);
       });
 
-    console.log(response);
-    expect(response).toBeTruthy();
+    expect(response).toStrictEqual<AtleticaProps>({ ...atleticaCreate.props });
+    expect(response).toHaveProperty("confirmacao", 1);
   });
 });

@@ -4,7 +4,7 @@ export type MembroProps = {
   id: string;
   rg: string;
   nome: string;
-  atletica: string;
+  atleticaCnpj: string;
 };
 
 export class Membro extends Entity<MembroProps> {
@@ -12,7 +12,7 @@ export class Membro extends Entity<MembroProps> {
     super(props, _id);
   }
 
-  static create(props: MembroProps, _id: string) {
+  static create(props: MembroProps, _id?: string) {
     return new Membro({ ...props }, _id);
   }
 }
