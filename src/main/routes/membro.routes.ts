@@ -1,8 +1,15 @@
 import { Router } from "express";
 import { CadastrarMembroController } from "../controllers/CadastrarMembro";
+import {
+  ProcurarMembroRGController,
+  ProcurarMembrosAtleticaController,
+} from "../controllers/ProcurarMembro";
 
 export const membroRoutes = Router();
 
 membroRoutes.post("/membro/", new CadastrarMembroController().handler);
-membroRoutes.get("/membro/:rg");
-membroRoutes.get("/membro/:atletica");
+membroRoutes.get("/membro/:rg", new ProcurarMembroRGController().handler);
+membroRoutes.get(
+  "/membro/:atletica",
+  new ProcurarMembrosAtleticaController().handler
+);
