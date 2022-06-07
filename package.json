@@ -24,7 +24,7 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "start": "ts-node-dev src/main/server.ts",
+    "start": "ts-node src/main/server.ts",
     "dev": "ts-node-dev --exit-child --watch --respawn --transpile-only src/main/server.ts",
     "test": "jest --max-workers=50%"
   }
