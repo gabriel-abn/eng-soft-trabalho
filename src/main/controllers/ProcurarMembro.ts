@@ -7,6 +7,8 @@ export class ProcurarMembroRGController {
     const { rg } = req.body;
 
     const response = await repo.searchByRG(rg);
+
+    return res.json(response);
   }
 }
 

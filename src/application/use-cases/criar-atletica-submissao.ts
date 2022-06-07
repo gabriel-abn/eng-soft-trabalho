@@ -14,6 +14,7 @@ export class CreateAtleticaSubmissionUseCase {
 
   async execute(props: CreateAtleticaSubmissionDTO) {
     const atletica = Atletica.create(props);
+    atletica.props.confirmacao = false;
 
     const response = await this.atleticaRepo.insert(atletica).then((res) => {
       return res;

@@ -7,24 +7,24 @@ export class EventoRepository implements IEventoRepository {
   async procurarTodosEventos(): Promise<EventoProps[]> {
     const request = await prisma.$queryRaw<
       EventoProps[]
-    >`SELECT * FROM leemgProjeto.Evento`;
+    >`SELECT * FROM "Evento"`;
 
     return request;
   }
   async insert(evento: Evento): Promise<EventoProps> {
     const query = Prisma.raw(
-      `INSERT INTO leemgProjeto.Evento VALUES (${evento.props.id}, ${evento.props.nome}, ${evento.props.data}, ${evento.props.local})`
+      `INSERT INTO "Evento" VALUES (${evento.props.id}, ${evento.props.nome}, ${evento.props.data}, ${evento.props.local})`
     );
     await prisma.$executeRaw(query);
 
     const response =
-      await prisma.$queryRaw<EventoProps>`SELECT * FROM leemgProjeto.Evento WHERE id=${evento.props.id}`;
+      await prisma.$queryRaw<EventoProps>`SELECT * FROM "Evento" WHERE id=${evento.props.id}`;
 
     return response;
   }
   async procurarPorID(id: string): Promise<EventoProps> {
     const request =
-      await prisma.$queryRaw<EventoProps>`SELECT * FROM leemgProjeto.Evento WHERE id=${id}`;
+      await prisma.$queryRaw<EventoProps>`SELECT * FROM "Evento" WHERE id=${id}`;
 
     return request;
   }

@@ -7,13 +7,13 @@ export class AtleticaRepository implements IAtleticaRepository {
   async searchAll(): Promise<AtleticaProps[]> {
     const res = await prisma.$queryRaw<
       AtleticaProps[]
-    >`SELECT * FROM leemgProjeto.Atletica`;
+    >`SELECT * FROM "Atletica"`;
 
     return res;
   }
   async acceptAtletica(cnpj: string): Promise<AtleticaProps> {
     const query = Prisma.raw(
-      `UPDATE leemgProjeto.Atletica SET confirmacao = ${1} WHERE (cnpj = ${cnpj});`
+      `UPDATE "Atletica" SET confirmacao = ${1} WHERE (cnpj = ${cnpj});`
     );
     const alter = await prisma.$executeRaw(query);
 
@@ -23,26 +23,26 @@ export class AtleticaRepository implements IAtleticaRepository {
 
     const request = await prisma.$queryRaw<
       AtleticaProps[]
-    >`SELECT * FROM leemgProjeto.Atletica WHERE cnpj = ${cnpj};`;
+    >`SELECT * FROM "Atletica" WHERE cnpj = ${cnpj};`;
 
     return request.at(0);
   }
   async insert(atletica: Atletica): Promise<AtleticaProps> {
     const query = Prisma.raw(
-      `INSERT INTO leemgProjeto.Atletica (id, nome, cnpj, faculdade, cidade, confirmacao) VALUES ('${atletica.props.id}', '${atletica.props.nome}', '${atletica.props.cnpj}', '${atletica.props.faculdade}', '${atletica.props.cidade}', ${atletica.props.confirmacao});`
+      `INSERT INTO "Atletica" (id, nome, cnpj, faculdade, cidade, confirmacao) VALUES ('${atletica.props.id}', '${atletica.props.nome}', '${atletica.props.cnpj}', '${atletica.props.faculdade}', '${atletica.props.cidade}', ${atletica.props.confirmacao});`
     );
     const request = await prisma.$executeRaw(query);
 
     const response = await prisma.$queryRaw<
       AtleticaProps[]
-    >`SELECT * FROM leemgProjeto.Atletica WHERE cnpj = ${atletica.props.cnpj}`;
+    >`SELECT * FROM "Atletica" WHERE cnpj = ${atletica.props.cnpj}`;
     return response.at(0);
   }
 
   async searchByID(id: string): Promise<AtleticaProps> {
     const request = await prisma.$queryRaw<
       AtleticaProps[]
-    >`SELECT * FROM leemgProjeto.Atletica WHERE cnpj = ${id};`;
+    >`SELECT * FROM "Atletica" WHERE cnpj = ${id};`;
 
     return request.at(0);
   }
@@ -50,7 +50,7 @@ export class AtleticaRepository implements IAtleticaRepository {
   async searchByAcceptence(acceptence: number): Promise<AtleticaProps[]> {
     const request = await prisma.$queryRaw<
       AtleticaProps[]
-    >`SELECT * FROM leemgProjeto.Atletica WHERE confirmacao = ${acceptence}`;
+    >`SELECT * FROM "Atletica" WHERE confirmacao = ${acceptence}`;
 
     return request;
   }

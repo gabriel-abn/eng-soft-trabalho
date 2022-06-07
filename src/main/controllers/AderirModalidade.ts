@@ -12,5 +12,7 @@ export class AderirModalidadeController {
       atleticaRepo,
       modalidadeRepo
     ).execute({ idAtletica, idModalidade });
+
+    return res.json(response);
   }
 }

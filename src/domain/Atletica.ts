@@ -6,7 +6,7 @@ export type AtleticaProps = {
   cnpj: string;
   faculdade: string;
   cidade: string;
-  confirmacao?: number;
+  confirmacao?: boolean;
 };
 
 export class Atletica extends Entity<AtleticaProps> {
@@ -19,6 +19,6 @@ export class Atletica extends Entity<AtleticaProps> {
   }
 
   public setConfirmationTrue() {
-    this.props.confirmacao = 1;
+    this.props.confirmacao = true;
   }
 }

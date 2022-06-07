@@ -6,6 +6,6 @@ export class ProcurarTodasAtleticasController {
     const repo = new AtleticaRepository();
 
     const response = await repo.searchAll();
-    return response;
+    return res.json(response);
   }
 }
