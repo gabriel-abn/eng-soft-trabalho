@@ -26,6 +26,7 @@
   "scripts": {
     "start": "ts-node src/main/server.ts",
     "dev": "ts-node-dev --exit-child --watch --respawn --transpile-only src/main/server.ts",
-    "test": "jest --max-workers=50%"
+    "test": "jest --max-workers=50%",
+    "migrate": "prisma migrate dev"
   }
 }
