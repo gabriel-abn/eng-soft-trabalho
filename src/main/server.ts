@@ -4,9 +4,11 @@ import { eventoRoutes } from "./routes/evento.routes";
 import { membroRoutes } from "./routes/membro.routes";
 import { modalidadeRoutes } from "./routes/modalidade.routes";
 
+const PORT = process.env.PORT || 5000;
+
 const app = express();
 
 app.use(express.json());
 app.use([atleticaRoutes, membroRoutes, eventoRoutes, modalidadeRoutes]);
 
-app.listen(5000, () => console.log("Server running..."));
+app.listen(PORT, () => console.log("Server running..."));
