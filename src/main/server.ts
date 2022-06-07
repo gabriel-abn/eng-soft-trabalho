@@ -9,4 +9,4 @@ const app = express();
 app.use(express.json());
 app.use([atleticaRoutes, membroRoutes, eventoRoutes, modalidadeRoutes]);
 
-app.listen(3333, () => console.log("Server running..."));
+app.listen(5000, () => console.log("Server running..."));
