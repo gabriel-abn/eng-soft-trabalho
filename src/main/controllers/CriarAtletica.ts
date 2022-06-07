@@ -5,9 +5,14 @@ import { AtleticaRepository } from "../../infra/PrismaRepositories/atletica-repo
 export class CriarAtleticaController {
   async handler(req: Request, res: Response) {
     const repo = new AtleticaRepository();
+    const { id, nome, cnpj, faculdade, cidade } = req.body;
 
     const result = await new CreateAtleticaSubmissionUseCase(repo).execute({
-      ...req.body,
+      id,
+      nome,
+      cnpj,
+      faculdade,
+      cidade,
     });
 
     return res.json(result);

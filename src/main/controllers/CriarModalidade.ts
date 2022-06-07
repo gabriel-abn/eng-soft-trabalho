@@ -5,8 +5,12 @@ import { ModalidadeRepository } from "../../infra/PrismaRepositories/modalidade-
 export class CriarModalidadeController {
   async handler(req: Request, res: Response) {
     const repo = new ModalidadeRepository();
+    const { id, nome, ambiente, tipo } = req.body;
     const result = await new CreateModalidadeUseCase(repo).execute({
-      ...req.body,
+      id,
+      nome,
+      ambiente,
+      tipo,
     });
 
     return res.json(result);

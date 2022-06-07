@@ -1,5 +1,5 @@
-import { Atletica } from "../../domain/Atletica";
-import { Modalidade } from "../../domain/Modalidade";
+import { AtleticaProps } from "../../domain/Atletica";
+import { ModalidadeProps } from "../../domain/Modalidade";
 import { IAtleticaRepository } from "../repositories/AtleticaRepository";
 import { IModalidadeRepository } from "../repositories/ModalidadeRepository";
 
@@ -18,23 +18,17 @@ export class AdesaoModalidadeUseCase {
     const adesao = {
       atletica: await this.atleticaRepo
         .searchByID(props.idAtletica)
-        .then((res: Atletica) => res)
-        .catch((err: Error) => err),
+        .then((res: AtleticaProps) => res),
       modalidade: await this.modalidadeRepo
         .searchByID(props.idModalidade)
-        .then((res: Modalidade) => res)
-        .catch((err: Error) => err),
+        .then((res: ModalidadeProps) => res),
     };
 
-    if (adesao.atletica instanceof Error) {
-      return new Error(
-        "Erro ao encontrar atletica: " + adesao.atletica.message
-      );
+    if (!adesao.atletica) {
+      throw new Error("Erro ao encontrar atletica.");
     }
-    if (adesao.modalidade instanceof Error) {
-      return new Error(
-        "Erro ao encontrar modalidade: " + adesao.modalidade.message
-      );
+    if (!adesao.modalidade) {
+      throw new Error("Erro ao encontrar modalidade");
     }
 
     return adesao;

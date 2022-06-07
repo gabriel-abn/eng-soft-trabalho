@@ -15,7 +15,7 @@ export class ModalidadeRepository implements IModalidadeRepository {
     >`SELECT * FROM leemgProjeto.Modalidade WHERE id = ${modalidade.props.id}`;
     return response.at(0);
   }
-  async searchByID(id: string): Promise<Error | ModalidadeProps> {
+  async searchByID(id: string): Promise<ModalidadeProps> {
     const response = await prisma.$queryRaw<
       ModalidadeProps[]
     >`SELECT * FROM leemgProjeto.Modalidade WHERE id = ${id}`;

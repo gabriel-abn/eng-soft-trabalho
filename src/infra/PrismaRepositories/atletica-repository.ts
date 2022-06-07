@@ -1,17 +1,24 @@
-import { Atletica, AtleticaProps } from "../../domain/Atletica";
-import { IAtleticaRepository } from "../../application/repositories/AtleticaRepository";
-import { prisma } from "./prismaClient";
 import { Prisma } from "@prisma/client";
+import { IAtleticaRepository } from "../../application/repositories/AtleticaRepository";
+import { Atletica, AtleticaProps } from "../../domain/Atletica";
+import { prisma } from "./prismaClient";
 
 export class AtleticaRepository implements IAtleticaRepository {
-  async acceptAtletica(cnpj: string): Promise<AtleticaProps | Error> {
+  async searchAll(): Promise<AtleticaProps[]> {
+    const res = await prisma.$queryRaw<
+      AtleticaProps[]
+    >`SELECT * FROM leemgProjeto.Atletica`;
+
+    return res;
+  }
+  async acceptAtletica(cnpj: string): Promise<AtleticaProps> {
     const query = Prisma.raw(
       `UPDATE leemgProjeto.Atletica SET confirmacao = ${1} WHERE (cnpj = ${cnpj});`
     );
     const alter = await prisma.$executeRaw(query);
 
     if (alter == 0) {
-      return new Error("Erro ao aceitar atletica");
+      throw new Error("Erro ao aceitar atletica");
     }
 
     const request = await prisma.$queryRaw<
