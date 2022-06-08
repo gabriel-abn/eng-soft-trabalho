@@ -12,7 +12,7 @@ export class MembroRepository implements IMembroRepository {
   }
   async searchByAtletica(atleticaCnpj: string): Promise<MembroProps[]> {
     const query = Prisma.raw(
-      `SELECT * FROM "Membro" WHERE atleticaCnpj = ${atleticaCnpj}`
+      `SELECT * FROM "Membro" WHERE atleticaCnpj = '${atleticaCnpj}'`
     );
 
     const response = await prisma.$queryRaw<MembroProps[]>(query);
