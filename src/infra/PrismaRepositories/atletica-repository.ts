@@ -35,7 +35,7 @@ export class AtleticaRepository implements IAtleticaRepository {
 
     const response = await prisma.$queryRaw<
       AtleticaProps[]
-    >`SELECT * FROM "Atletica" WHERE cnpj = '${atletica.props.cnpj}'`;
+    >`SELECT * FROM "Atletica" WHERE cnpj = ${atletica.props.cnpj}`;
     return response.at(0);
   }
 

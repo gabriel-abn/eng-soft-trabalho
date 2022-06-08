@@ -12,7 +12,7 @@ export class MembroRepository implements IMembroRepository {
   }
   async searchByAtletica(atleticaCnpj: string): Promise<MembroProps[]> {
     const query = Prisma.raw(
-      `SELECT * FROM "Membro" WHERE atleticaCnpj = '${atleticaCnpj}'`
+      `SELECT * FROM "Membro" WHERE atleticaCnpj = ${atleticaCnpj}`
     );
 
     const response = await prisma.$queryRaw<MembroProps[]>(query);
@@ -30,11 +30,11 @@ export class MembroRepository implements IMembroRepository {
     }
 
     const response =
-      await prisma.$queryRaw<MembroProps>`SELECT * FROM "Membro" WHERE rg = '${membro.props.rg}'`;
+      await prisma.$queryRaw<MembroProps>`SELECT * FROM "Membro" WHERE rg = ${membro.props.rg}`;
     return response;
   }
   async searchByRG(rg: string): Promise<MembroProps> {
-    const query = Prisma.raw(`SELECT * FROM "Membro" WHERE rg = '${rg}'`);
+    const query = Prisma.raw(`SELECT * FROM "Membro" WHERE rg = ${rg}`);
 
     const response = await prisma.$queryRaw<MembroProps>(query);
     return response;
