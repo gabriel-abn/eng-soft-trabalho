@@ -9,6 +9,12 @@ export class CriarAtleticaController {
     const { nome, cnpj, faculdade, cidade } = req.body;
     let id = GerarIDAtletica(nome, cnpj);
 
+    const hasCnpj = await repo.searchByID(cnpj);
+
+    if (hasCnpj) {
+      res.status(400).send("CNPJ ja cadastrado");
+    }
+
     const result = await new CreateAtleticaSubmissionUseCase(repo).execute({
       id,
       nome,

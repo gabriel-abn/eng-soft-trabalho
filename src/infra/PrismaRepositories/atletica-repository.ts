@@ -13,7 +13,7 @@ export class AtleticaRepository implements IAtleticaRepository {
   }
   async acceptAtletica(cnpj: string): Promise<AtleticaProps> {
     const query = Prisma.raw(
-      `UPDATE "Atletica" SET confirmacao = ${1} WHERE (cnpj = ${cnpj});`
+      `UPDATE "Atletica" SET confirmacao = ${1} WHERE (cnpj = '${cnpj}');`
     );
     const alter = await prisma.$executeRaw(query);
 
@@ -23,7 +23,7 @@ export class AtleticaRepository implements IAtleticaRepository {
 
     const request = await prisma.$queryRaw<
       AtleticaProps[]
-    >`SELECT * FROM "Atletica" WHERE cnpj = ${cnpj};`;
+    >`SELECT * FROM "Atletica" WHERE cnpj = '${cnpj}';`;
 
     return request.at(0);
   }
@@ -35,14 +35,14 @@ export class AtleticaRepository implements IAtleticaRepository {
 
     const response = await prisma.$queryRaw<
       AtleticaProps[]
-    >`SELECT * FROM "Atletica" WHERE cnpj = ${atletica.props.cnpj}`;
+    >`SELECT * FROM "Atletica" WHERE cnpj = '${atletica.props.cnpj}'`;
     return response.at(0);
   }
 
   async searchByID(id: string): Promise<AtleticaProps> {
     const request = await prisma.$queryRaw<
       AtleticaProps[]
-    >`SELECT * FROM "Atletica" WHERE cnpj = ${id};`;
+    >`SELECT * FROM "Atletica" WHERE cnpj = '${id}';`;
 
     return request.at(0);
   }
