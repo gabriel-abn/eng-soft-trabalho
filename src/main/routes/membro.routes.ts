@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { CadastrarMembroController } from "../controllers/CadastrarMembro";
 import {
-  ProcurarMembroRGController,
   ProcurarMembrosAtleticaController,
   ProcurarTodosMembros,
 } from "../controllers/ProcurarMembro";
@@ -9,7 +8,7 @@ import {
 export const membroRoutes = Router();
 
 membroRoutes.post("/membro/", new CadastrarMembroController().handler);
-membroRoutes.get("/membro/:rg", new ProcurarMembroRGController().handler);
+// membroRoutes.get("/membro/:rg", new ProcurarMembroRGController().handler);
 membroRoutes.get(
   "/membro/:atletica",
   new ProcurarMembrosAtleticaController().handler
