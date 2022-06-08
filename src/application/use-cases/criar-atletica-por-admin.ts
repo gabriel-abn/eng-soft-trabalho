@@ -7,7 +7,6 @@ type CreateAtleticaByAdminDTO = {
   cnpj: string;
   faculdade: string;
   cidade: string;
-  confirmacao?: number;
 };
 
 export class CreateAtleticaByAdminUseCase {

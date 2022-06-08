@@ -27,6 +27,6 @@
     "start": "ts-node src/main/server.ts",
     "dev": "ts-node-dev --exit-child --watch --respawn --transpile-only src/main/server.ts",
     "test": "jest --max-workers=50%",
-    "migrate": "prisma migrate dev"
+    "migrate": "prisma migrate resolve --applied \"20220607192816_trabalho_bd_pgadmin\" --preview-feature"
   }
 }

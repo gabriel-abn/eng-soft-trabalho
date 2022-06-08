@@ -4,6 +4,12 @@ import { Membro, MembroProps } from "../../domain/Membro";
 import { prisma } from "./prismaClient";
 
 export class MembroRepository implements IMembroRepository {
+  async searchAll(): Promise<MembroProps[]> {
+    const query = Prisma.raw(`SELECT * FROM "Membro"`);
+
+    const response = await prisma.$queryRaw<MembroProps[]>(query);
+    return response;
+  }
   async searchByAtletica(atleticaCnpj: string): Promise<MembroProps[]> {
     const query = Prisma.raw(
       `SELECT * FROM "Membro" WHERE atleticaCnpj = ${atleticaCnpj}`

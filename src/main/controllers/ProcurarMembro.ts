@@ -21,3 +21,12 @@ export class ProcurarMembrosAtleticaController {
     return res.json(result);
   }
 }
+
+export class ProcurarTodosMembros {
+  async handler(req: Request, res: Response) {
+    const repo = new MembroRepository();
+    const result = await repo.searchAll();
+
+    return res.json(result);
+  }
+}

@@ -3,6 +3,7 @@ import { CadastrarMembroController } from "../controllers/CadastrarMembro";
 import {
   ProcurarMembroRGController,
   ProcurarMembrosAtleticaController,
+  ProcurarTodosMembros,
 } from "../controllers/ProcurarMembro";
 
 export const membroRoutes = Router();
@@ -13,3 +14,5 @@ membroRoutes.get(
   "/membro/:atletica",
   new ProcurarMembrosAtleticaController().handler
 );
+
+membroRoutes.get("/membro/all", new ProcurarTodosMembros().handler);
